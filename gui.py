@@ -4,7 +4,6 @@ import numpy as np
 class GUI:
     def __init__(self) -> None:
         self.border_size = 50
-        self.setup()
     
     def display_frame(self, frame) -> None:
         # Display the resulting frame, press q to quit the application
