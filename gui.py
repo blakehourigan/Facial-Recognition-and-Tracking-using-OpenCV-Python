@@ -2,17 +2,9 @@ import cv2
 import numpy as np
 
 class GUI:
-    def __init__(self):
+    def __init__(self) -> None:
         self.border_size = 50
         self.setup()
-    
-    def setup(self):
-        # Perform any setup tasks here
-        pass
-    
-    def run(self):
-        # Start the GUI application here
-        pass
     
     def display_frame(self, frame):
         # Display the resulting frame, press q to quit the application
