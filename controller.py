@@ -3,10 +3,12 @@ import RPi.GPIO as GPIO
 
 from config import CONFIG
 from servo_ctl import ServoController
+from gui import GUI
 
 class Controller: 
-    def __init__(self):  
-        self.config = CONFIG()
+    def __init__(self) -> None:  
+        self.config = CONFIG() # instantiate gui and config classes
+        self.gui = GUI()
         
         self.face_model = self.config.get_face_model()   # get face model and camera from config
         
@@ -16,31 +18,29 @@ class Controller:
         
         self.detectFaces()
 
-        
-    def setServoAngle(self):
-        calculated_angle = 0; 
-        return calculated_angle
-
-    def detectFaces(self):
+    def detectFaces(self) -> None:
         while True:
             ret, frame = self.cam.read()
-            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            faces = self.face_model.detectMultiScale(gray, 1.1, 4)
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) # convert the image to grayscale
+            faces = self.face_model.detectMultiScale(gray, 1.1, 4) 
 
             for (x, y, w, h) in faces:
                 # Calculate position of face and move servo
-                number = self.setServoAngle()
-                cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
-
-            # Display the resulting frame
-            cv2.imshow('frame', frame)
-            if cv2.waitKey(1) == ord('q'):
-                break
-
-    def exit(self):
-        # When everything done, release the capture
-        cam.release()
+                number = self.servo_controller.setServoAngle()
+                
+                # draw a rectangle around the face
+                self.gui.place_rectangle(frame, x, y, w, h)
+               
+            frame = self.gui.create_border(frame)    
+            
+            self.gui.place_text(frame, faces)
+            
+            self.gui.display_frame(frame)
+            
+    def exit(self) -> None:
+        # On press of q, release the camera and destroy all windows
+        self.cam.release()
         cv2.destroyAllWindows()
-        pwm.stop()
+        self.servo_ctl.cleanup()
         GPIO.cleanup()
 
