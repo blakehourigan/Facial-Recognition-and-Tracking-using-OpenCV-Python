@@ -2,14 +2,15 @@ import cv2
 import numpy as np
 
 class GUI:
-    def __init__(self) -> None:
+    def __init__(self, controller) -> None:
         self.border_size = 50
+        self.controller = controller
     
     def display_frame(self, frame) -> None:
         # Display the resulting frame, press q to quit the application
         cv2.imshow('frame', frame)
         if cv2.waitKey(1) == ord('q'):
-            exit()
+            self.controller.exit()
     
     def create_border(self, frame) -> np.ndarray:
         frame = cv2.copyMakeBorder(frame, self.border_size, self.border_size, 0, 0, cv2.BORDER_CONSTANT, value=[0, 0, 0])
@@ -25,6 +26,5 @@ class GUI:
     def place_rectangle(self, frame, x, y, w, h) -> None:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
     
-    def cleanup(self):
-        # Perform any cleanup tasks here
-        pass
+    def place_center_dot(self, frame, center_x, center_y) -> None:
+        cv2.circle(frame, (center_x, center_y), 5, (0, 255, 0), -1)

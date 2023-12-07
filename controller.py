@@ -8,7 +8,7 @@ from gui import GUI
 class Controller: 
     def __init__(self) -> None:  
         self.config = CONFIG() # instantiate gui and config classes
-        self.gui = GUI()
+        self.gui = GUI(self)
         
         self.face_model = self.config.get_face_model()   # get face model and camera from config
         
@@ -26,16 +26,24 @@ class Controller:
 
             for (x, y, w, h) in faces:
                 # Calculate position of face and move servo
-                number = self.servo_controller.setServoAngle()
+                #number = self.servo_controller.setServoAngle()
                 
-                # draw a rectangle around the face
+                # draw a rectangle around the face  
                 self.gui.place_rectangle(frame, x, y, w, h)
+
+                center_x = x + w//2
+                center_y = y + h//2
+                
+                self.gui.place_center_dot(frame, center_x, center_y)
+                
                
             frame = self.gui.create_border(frame)    
             
             self.gui.place_text(frame, faces)
             
             self.gui.display_frame(frame)
+            
+            #self.servo_controller.setServoAngle(angle)
             
     def exit(self) -> None:
         # On press of q, release the camera and destroy all windows
