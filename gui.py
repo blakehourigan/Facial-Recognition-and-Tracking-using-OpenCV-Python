@@ -6,7 +6,7 @@ class GUI:
         self.border_size = 50
         self.setup()
     
-    def display_frame(self, frame):
+    def display_frame(self, frame) -> None:
         # Display the resulting frame, press q to quit the application
         cv2.imshow('frame', frame)
         if cv2.waitKey(1) == ord('q'):
