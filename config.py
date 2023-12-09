@@ -8,7 +8,7 @@ class CONFIG:
         # get the first available camera 
         self.cam = cv2.VideoCapture(0)        
         
-        self.servo_PIN = 17
+        self.servo_PIN = 18 # GPIO 18 is hardware PWM pin
 
     def get_camera(self) -> cv2.VideoCapture:
         return self.cam

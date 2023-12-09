@@ -26,5 +26,5 @@ class GUI:
     def place_rectangle(self, frame, x, y, w, h) -> None:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
     
-    def place_center_dot(self, frame, center_x, center_y) -> None:
-        cv2.circle(frame, (center_x, center_y), 5, (0, 255, 0), -1)
+    def place_center_dot(self, frame, center_x, center_y, color) -> None:
+        cv2.circle(frame, (center_x, center_y), 5, color, -1)
