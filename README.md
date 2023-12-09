@@ -8,7 +8,7 @@ This projects aim was to create a smart camera system that can detect and track 
 - **Servo Motor Control:** Uses the RPi.GPIO library to control a servo motor for camera movement.
 
 ## Hardware Requirements
-- Raspberry Pi 4 (or a compatible model)
+- Raspberry Pi 4 (or similar model)
 - USB Camera or Raspberry Pi Camera Module
 - Servo Motor
 - Appropriate cables and power supply
@@ -20,7 +20,7 @@ Requirements.txt file is supplied for easy installation of required packages lis
 
 - Python 3.x
 - OpenCV Python Library (`opencv-python`)
-- RPi.GPIO Python Library
+- Pigpio Python Library
 - Numpy
 
 ## Installation
@@ -39,14 +39,19 @@ To install and run this project, follow these steps:
    - Open a terminal on your Raspberry Pi.
    - Update the package list: `sudo apt-get update`
    - Install Python3 and pip (if not already installed): `sudo apt-get install python3 python3-pip`
+   - Install Pigpio by runnning the following command: `sudo apt install pigpio`
    - Install required dependencies using Pip and supplied requirements.txt: `pip3 install -r requirements.txt`
+
+4. **Starting the Pigpio Daemon:**
+   - Run pigpio: `sudo pigpio`
+   - Start the Daemon and enable it to start at boot time: `sudo systemctl enable pigpio` `sudo systemctl start pigpio`
 
 4. **Running the Script:**
    - Run the main script: `python3 main.py`
    - The script should display the camera feed and begin tracking faces and reporting information about amount of faces tracked.
 
 ## Usage
-- On starting the script, it will open a feed of a connected camera.
+- On starting the script, it will initialize the servo motor by completing a full sweep, and will open a feed of the connected camera.
 - Once a face is detected in the camera's view, the program will report a face found, and the servo motor will adjust to keep the face centered in the frame.
 - Press 'q' anytime to quit the application and close the camera feed.
 
