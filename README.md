@@ -1,16 +1,16 @@
 # Face Tracking Camera Controller
 
 ## Description
-This projects aim was to create a smart camera system that can detect and track a human face. It uses OpenCV for face detection and RPi.GPIO to control a servo motor using PWM. The system keeps the user's face in the frame by adjusting the camera's position with the servo motor.
+This projects aim was to create a smart camera system that can detect and track a human face. It uses OpenCV for face detection and pigpio to control a servo motor using PWM. The system keeps the user's face in the frame by adjusting the camera's position with the servo motor.
 
 ## Features
 - **Face Detection:** Utilizes the Haar Cascade Frontalface Default model available in OpenCV for real-time face detection.
-- **Servo Motor Control:** Uses the RPi.GPIO library to control a servo motor for camera movement.
+- **Servo Motor Control:** Uses the pigpio Raspberry Pi library to control a servo motor for camera movement.
 
 ## Hardware Requirements
 - Raspberry Pi 4 (or similar model)
 - USB Camera or Raspberry Pi Camera Module
-- Servo Motor
+- [[Servo Motor]](https://www.smraza.com/products/smraza-10-pcs-sg90-9g-micro-servo-motor-kit-for-rc-robot-arm-helicopter-airplane-car-boat-control-arduino-project-s51)
 - Appropriate cables and power supply
 
 ## Software Requirements
