@@ -10,7 +10,7 @@ This projects aim was to create a smart camera system that can detect and track 
 ## Hardware Requirements
 - Raspberry Pi 4 (or similar model)
 - USB Camera or Raspberry Pi Camera Module
-- [[Servo Motor]](https://www.smraza.com/products/smraza-10-pcs-sg90-9g-micro-servo-motor-kit-for-rc-robot-arm-helicopter-airplane-car-boat-control-arduino-project-s51)
+- [Servo Motor](https://www.smraza.com/products/smraza-10-pcs-sg90-9g-micro-servo-motor-kit-for-rc-robot-arm-helicopter-airplane-car-boat-control-arduino-project-s51)
 - Appropriate cables and power supply
 
 ## Software Requirements
