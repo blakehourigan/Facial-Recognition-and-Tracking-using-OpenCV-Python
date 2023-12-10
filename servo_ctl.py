@@ -24,7 +24,7 @@ class ServoController:
                 self.set_servo_angle(i)
                 time.sleep(.025)    
     
-    def set_servo_angle(self, angle) -> int:
+    def set_servo_angle(self, angle) -> None:
         """ 
         Map the angle that we want to the pulse width range of the servo.
 
